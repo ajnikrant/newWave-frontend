@@ -1,7 +1,10 @@
 import React from 'react';
 
 function Categories(){
-    return ()
+    return (
+        <>
+        </>
+    )
 }
 
 export default Categories

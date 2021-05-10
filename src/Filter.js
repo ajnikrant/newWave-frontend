@@ -1,7 +1,10 @@
 import React from 'react';
 
 function Filter(){
-    return ()
+    return (
+        <>
+        </>
+    )
 }
 
 export default Filter

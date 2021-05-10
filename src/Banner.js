@@ -1,7 +1,9 @@
 import React from 'react';
 
 function Banner(){
-    return ()
+    return (
+        <h1>newWave</h1>
+    )
 }
 
 export default Banner
