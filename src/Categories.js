@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Categories(){
+function Categories({ listingsArr }){
+    
     return (
         <>
         </>

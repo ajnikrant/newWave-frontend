@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Filter(){
+function Filter({ listingsArr }){
     return (
         <>
         </>
