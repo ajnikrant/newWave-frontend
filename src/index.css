@@ -1,3 +1,18 @@
+
+
+  .itemCard {
+    width: 25%;
+    /* flex-wrap: wrap; */
+  }
+
+  .itemList{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
+
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +25,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+img {
+  width: 200px;
+  height: 200px;
 }

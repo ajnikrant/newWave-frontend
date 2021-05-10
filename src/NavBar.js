@@ -11,7 +11,7 @@ function NavBar(){
         color: "white",
       };
     return (
-        <div id="NavBar">
+        <div id="navbar">
             <NavLink to="/" exact style={linkStyles} activeStyle={{ background: "darkblue",}}> Home </NavLink>
             <NavLink to="/profile/:id" exact style={linkStyles} activeStyle={{ background: "darkblue",}}> Profile </NavLink>
             <NavLink to="/listings/new" exact style={linkStyles} activeStyle={{ background: "darkblue",}}> Make a new listing </NavLink>

@@ -2,7 +2,7 @@ import React from 'react';
 
 function Banner(){
     return (
-        <h1>newWave</h1>
+        <h1 id="banner">newWave</h1>
     )
 }
 

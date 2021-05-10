@@ -7,7 +7,7 @@ function ItemList({ listingsArr }){
         return <ItemCard key={listing.id} listing={listing}/>
     })
     return (
-       <div>
+       <div className="itemList">
            {listings}
        </div>
     )
