@@ -10,6 +10,22 @@ import ItemCard from './ItemCard'
 
 function App() {
   const[profileDetails, setProfileDetails] = useState({})
+  const [listingsArr, setListingsArr] = useState([])
+  const [selectedCat, setSelectedCat] = useState("all")
+
+  useEffect(()=>{
+      fetch ('http://localhost:3000/listings')
+      .then(r=> r.json())
+      .then(setListingsArr)
+      }, [])
+
+  const filteredByCat = listingsArr.filter(listing => {
+      if (selectedCat === "all") {
+          return listing
+      } else if (listing.category === selectedCat) {
+          return listing
+      }
+  })
 
   useEffect(()=>{
     fetch('http://localhost:3000/users/172')
@@ -24,7 +40,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <HomePage />
+          <HomePage filteredByCat={filteredByCat} selectedCat={selectedCat} setSelectedCat={setSelectedCat} listingsArr={listingsArr}/>
         </Route>
         <Route path="/profile/:id">
           <Profile profileDetails={profileDetails}/>

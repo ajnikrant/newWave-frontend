@@ -17,6 +17,7 @@ function Categories({ filteredByCat, selectedCat, setSelectedCat }){
     return (
         <>
             <Filter />
+            <CategoryCard name="All" />
             {catsArr}
         </>
     )
