@@ -7,9 +7,6 @@ function Categories({ filteredByCat, selectedCat, setSelectedCat }){
     const instrumentCats = filteredByCat.map(listing => {
         return listing.category
     })
-    // const instrumentCats = () => filteredByCat.map(listing => {
-    //     return listing.category
-    // })
    
     const uniqueCats = Array.from(new Set(instrumentCats))
 

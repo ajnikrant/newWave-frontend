@@ -12,7 +12,7 @@ function App() {
   const[profileDetails, setProfileDetails] = useState({})
 
   useEffect(()=>{
-    fetch('http://localhost:3000/users/2')
+    fetch('http://localhost:3000/users/172')
     .then(r => r.json())
     .then(setProfileDetails)
   },[])
