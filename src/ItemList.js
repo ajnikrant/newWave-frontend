@@ -1,9 +1,9 @@
 import React from 'react';
 import ItemCard from './ItemCard';
 
-function ItemList({ listingsArr }){
+function ItemList({ filteredByCat }){
 
-    const listings = listingsArr.map(listing => {
+    const listings = filteredByCat.map(listing => {
         return <ItemCard key={listing.id} listing={listing}/>
     })
     return (

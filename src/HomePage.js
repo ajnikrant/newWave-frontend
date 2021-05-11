@@ -3,10 +3,11 @@ import NewItemForm from './NewItemForm';
 import ItemList from './ItemList'
 import Categories from './Categories'
 import Filter from './Filter'
-import CategoryCard from './CategoryCard';
+
 
 function HomePage(){
     const [listingsArr, setListingsArr] = useState([])
+    const [selectedCat, setSelectedCat] = useState("all")
 
     useEffect(()=>{
         fetch ('http://localhost:3000/listings')
@@ -14,21 +15,22 @@ function HomePage(){
         .then(setListingsArr)
         }, [])
 
-    const instrumentCats = listingsArr.map(listing => {
-        return listing.category
+    const filteredByCat = listingsArr.filter(listing => {
+        if (selectedCat === "all") {
+            return listing
+        } else if (listing.category === selectedCat) {
+            return listing
+        }
     })
-    const uniqueCats = Array.from(new Set(instrumentCats))
-    const catsArr = uniqueCats.map(cat => {
-        return <CategoryCard key={cat} name={cat}/>
-    })   
+    console.log(filteredByCat)
+
     
     return (
         <div>
-            {catsArr}
-            <ItemList listingsArr={listingsArr}/>
             <NewItemForm />
-            <Categories listingsArr={listingsArr}/>
+            <Categories filteredByCat={filteredByCat} selectedCat={selectedCat} setSelectedCat={setSelectedCat} />
             <Filter listingsArr={listingsArr}/>
+            <ItemList filteredByCat={filteredByCat}/>
         </div>
     )
 }
