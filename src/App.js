@@ -36,7 +36,7 @@ function App() {
   },[])
 
   function addNewItem(newItemObj){
-    console.log(newItemObj)
+    setListingsArr([...listingsArr, newItemObj])
   }
 
   return (

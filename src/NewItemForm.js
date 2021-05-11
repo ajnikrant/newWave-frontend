@@ -65,11 +65,11 @@ function NewItemForm({sendNewItemUp}){
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(newItem)
         })
-        // .then(r => r.json())
-        // .then(console.log)
+        .then(r => r.json())
+        .then(sendNewItemUp)
 
 
-        sendNewItemUp(newItem)
+        // sendNewItemUp(newItem)
     }
 
 
