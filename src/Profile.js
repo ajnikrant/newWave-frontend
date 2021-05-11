@@ -3,9 +3,8 @@ import SaleDetails from './SaleDetails';
 
 function Profile({profileDetails}){
     const {username, sales, email, location, avatar="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"}= profileDetails
-    console.log(profileDetails)
 
-    const rendersaleDetails = () =>(sales.map(saleObj => <SaleDetails  saleObj={saleObj}/> ))
+    const rendersaleDetails = () =>(sales.map(saleObj => <SaleDetails  key={saleObj.id} saleObj={saleObj}/> ))
         
     
     

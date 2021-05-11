@@ -4,8 +4,12 @@ function SaleDetails ({saleObj}){
     console.log(saleObj)
     return (
         <div>
-            <h3>{saleObj.id}</h3>
-            <h3>Price: {saleObj.price}</h3>
+            <h4>Item Purchased: {saleObj.listing.title}</h4>
+            <ul>
+                <li>Price: {saleObj.price}</li>
+                <li>Location Purchased: {saleObj.listing.location}</li>
+                <li>Purchase Type: {saleObj.listing.barter? "Barter" : "Purchase"}</li>
+            </ul>
 
         </div>
     )
