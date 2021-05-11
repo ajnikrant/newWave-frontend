@@ -28,11 +28,14 @@ function App() {
   })
 
   useEffect(()=>{
-    fetch('http://localhost:3000/users/172')
+    fetch('http://localhost:3000/users/2')
     .then(r => r.json())
     .then(setProfileDetails)
   },[])
 
+  function addNewItem(newItemObj){
+    console.log(newItemObj)
+  }
 
   return (
     <div>
@@ -46,7 +49,7 @@ function App() {
           <Profile profileDetails={profileDetails}/>
         </Route>
         <Route  path="/listings/new">
-          <NewItemForm />
+          <NewItemForm sendNewItemUp={addNewItem}/>
         </Route>
         <Route  path="/listings">
           <ItemList/>
