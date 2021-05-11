@@ -22,8 +22,7 @@ function HomePage(){
             return listing
         }
     })
-    console.log(filteredByCat)
-
+   
     
     return (
         <div>
