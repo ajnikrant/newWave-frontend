@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Banner from './Banner'
 import NavBar from './NavBar'
@@ -9,7 +9,13 @@ import ItemList from './ItemList'
 import ItemCard from './ItemCard'
 
 function App() {
+  const[profileDetails, setProfileDetails] = useState({})
 
+  useEffect(()=>{
+    fetch('http://localhost:3000/users/2')
+    .then(r => r.json())
+    .then(setProfileDetails)
+  },[])
 
 
   return (
@@ -21,7 +27,7 @@ function App() {
           <HomePage />
         </Route>
         <Route exact path="/profile/:id">
-          <Profile />
+          <Profile profileDetails={profileDetails}/>
         </Route>
         <Route exact path="/listings/new">
           <NewItemForm />
