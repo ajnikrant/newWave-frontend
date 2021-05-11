@@ -26,16 +26,16 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route exact path="/profile/:id">
+        <Route path="/profile/:id">
           <Profile profileDetails={profileDetails}/>
         </Route>
-        <Route exact path="/listings/new">
+        <Route  path="/listings/new">
           <NewItemForm />
         </Route>
-        <Route exact path="/listings">
+        <Route  path="/listings">
           <ItemList/>
         </Route>
-        <Route exact path="/listings/:id">
+        <Route  path="/listings/:id">
           <ItemCard/>
         </Route>
       </Switch>
