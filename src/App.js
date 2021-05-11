@@ -35,14 +35,9 @@ function App() {
     .then(setProfileDetails)
   },[])
 
-<<<<<<< HEAD
   function addNewItem(newItemObj){
     console.log(newItemObj)
   }
-=======
- 
-
->>>>>>> third_missy
 
   return (
     <div>
