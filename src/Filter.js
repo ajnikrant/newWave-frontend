@@ -1,15 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-function Filter({ listingsArr }){
+function Filter({ filteredByCat }){
+    const [filterChange, setFilterChange] = useState("---")
+    
+    function handlePriceFilterChange(e) {
+        setFilterChange(e.target.value)
+    }
+    
+    // function filterByPrice() {
+    //     if (filterChange ===)
+    // }
+
     return (
         <div>
-            <select>
-                <option>Whatevs</option>
-                <option>Low to High</option>
-                <option>High to Low</option>
+            <label>Sort by price: </label>
+            <select onChange={handlePriceFilterChange}>
+                <option value="---">---</option>
+                <option value="Low">Low to High</option>
+                <option value="High">High to Low</option>
             </select>
+            <label> Sort by sale/trade: </label>
             <select>
-                <option>Whatevs</option>
+                <option>---</option>
                 <option>Sale only</option>
                 <option>Trade only</option>
             </select>

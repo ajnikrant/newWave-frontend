@@ -11,7 +11,8 @@ import ItemCard from './ItemCard'
 function App() {
   const[profileDetails, setProfileDetails] = useState({})
   const [listingsArr, setListingsArr] = useState([])
-  const [selectedCat, setSelectedCat] = useState("all")
+  const [selectedCat, setSelectedCat] = useState("All")
+  const [catClicked, setCatClicked] = useState(false)
 
   useEffect(()=>{
       fetch ('http://localhost:3000/listings')
@@ -20,27 +21,30 @@ function App() {
       }, [])
 
   const filteredByCat = listingsArr.filter(listing => {
-      if (selectedCat === "all") {
+      if (selectedCat === "All") {
           return listing
       } else if (listing.category === selectedCat) {
           return listing
       }
   })
+ 
 
   useEffect(()=>{
-    fetch('http://localhost:3000/users/172')
+    fetch('http://localhost:3000/users/2')
     .then(r => r.json())
     .then(setProfileDetails)
   },[])
+
+ 
 
 
   return (
     <div>
       <Banner />
-      <NavBar />
+      <NavBar catClicked={catClicked} setCatClicked={setCatClicked} setSelectedCat={setSelectedCat}/>
       <Switch>
         <Route exact path="/">
-          <HomePage filteredByCat={filteredByCat} selectedCat={selectedCat} setSelectedCat={setSelectedCat} listingsArr={listingsArr}/>
+          <HomePage filteredByCat={filteredByCat} selectedCat={selectedCat} setSelectedCat={setSelectedCat} listingsArr={listingsArr} catClicked={catClicked} setCatClicked={setCatClicked}/>
         </Route>
         <Route path="/profile/:id">
           <Profile profileDetails={profileDetails}/>

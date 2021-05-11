@@ -5,30 +5,14 @@ import Categories from './Categories'
 import Filter from './Filter'
 
 
-function HomePage({ filteredByCat, selectedCat, setSelectedCat, listingsArr }){
-    // const [listingsArr, setListingsArr] = useState([])
-    // const [selectedCat, setSelectedCat] = useState("all")
+function HomePage({ filteredByCat, selectedCat, setSelectedCat, listingsArr, catClicked, setCatClicked}){
 
-    // useEffect(()=>{
-    //     fetch ('http://localhost:3000/listings')
-    //     .then(r=> r.json())
-    //     .then(setListingsArr)
-    //     }, [])
-
-    // const filteredByCat = listingsArr.filter(listing => {
-    //     if (selectedCat === "all") {
-    //         return listing
-    //     } else if (listing.category === selectedCat) {
-    //         return listing
-    //     }
-    // })
-   
     
     return (
         <div>
-            <Categories filteredByCat={filteredByCat} selectedCat={selectedCat} setSelectedCat={setSelectedCat} />
-            <Filter listingsArr={listingsArr}/>
-            <ItemList filteredByCat={filteredByCat}/>
+            <Categories filteredByCat={filteredByCat} selectedCat={selectedCat} setSelectedCat={setSelectedCat} catClicked={catClicked} setCatClicked={setCatClicked}/>
+            {/* <Filter listingsArr={listingsArr}/> */}
+            {/* <ItemList filteredByCat={filteredByCat}/> */}
         </div>
     )
 }
