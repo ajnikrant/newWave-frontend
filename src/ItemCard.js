@@ -1,16 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'
+import ItemDetail from './ItemDetail';
+
 
 function ItemCard({ listing }){
     const { title, price, description, user_id, category, id, barter, for_sale, barter_description, image, location } = listing
-    return (
-        // <div className="itemCard">
-        //     <h3>{title}</h3>
-        //     <img src={image} alt={title} />
-        //     <p>{description}</p>
-        //     <p>${price}</p>
-        //     <p>Located at: {location}</p>
-        // </div>
+    const history = useHistory()
 
+    function handleItemClick() {
+        history.push(`/listings/${id}`)
+    }
+
+    return (
+     
         <div className="card">
             <img src={image} className="card-img-top" alt={title} />
             <div className="card-body">
@@ -18,6 +20,7 @@ function ItemCard({ listing }){
                 <p className="card-text">Price: {price}</p>
                 <p className="card-text">Location: {location}</p>
                 <p className="card-text">Description: {description}</p>
+                <button onClick={handleItemClick}>See more details</button>
                 {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
             </div>
         </div>
