@@ -16,12 +16,10 @@ function Categories({ filteredByCat, selectedCat, setSelectedCat, catClicked, se
         return <CategoryCard key={cat} name={cat} selectedCat={selectedCat} setSelectedCat={setSelectedCat} catClicked={catClicked} setCatClicked={setCatClicked}/>
     })  
 
-    console.log(uniqueCats)
         
     return (
         <>
         <br></br><br></br>
-            {/* {!catClicked ? <CategoryCard name="All" /> : null} */}
             {catClicked ? <Filter filteredByCat={filteredByCat} filterByPrice={filterByPrice} filterChange={filterChange} setFilterChange={setFilterChange}/> : null}
             {catClicked ? <ItemList filteredByCat={filteredByCat}/> : null}
             {catsArr}
