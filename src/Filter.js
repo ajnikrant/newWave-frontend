@@ -24,8 +24,8 @@ function Filter({  filterByPrice, setFilterChange, setSaleChange, saleTypeSelect
             <label> Sort by sale/trade: </label>
             <select onChange={handleSaleToggle}>
                 <option value="all">All</option>
-                <option value="for_sale">Sale only</option>
-                <option value="barter">Trade only</option>
+                <option value="for_sale">For Sale</option>
+                <option value="barter">Open To Trade</option>
             </select>
         </div>
     )

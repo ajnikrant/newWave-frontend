@@ -42,6 +42,20 @@ function App() {
     setListingsArr([...listingsArr, newItemObj])
   }
 
+  
+  
+  
+  function saleTypeSelection() {
+    if (saleChange === "for_sale") {
+      const newArr = filteredByCat.filter(listing => (listing.for_sale === true))
+      return newArr
+    } else if (saleChange === "barter") {
+      const newArr = filteredByCat.filter(listing => (listing.barter === true))
+      return newArr
+    }
+    return filteredByCat
+  }
+  
   function filterByPrice() {
       if (filterChange === "Low") {
         const priceSortedArr = filteredByCat.sort((a,b) => a.price - b.price )
@@ -52,19 +66,6 @@ function App() {
       } 
         return filteredByCat
 }
-
-
-
-  function saleTypeSelection() {
-    if (saleChange === "for_sale") {
-       const newArr = filteredByCat.filter(listing => (listing.for_sale === true))
-      return newArr
-    } else if (saleChange === "barter") {
-       const newArr = filteredByCat.filter(listing => (listing.barter === true))
-      return newArr
-    }
-    return filteredByCat
-  }
 
 
   return (
