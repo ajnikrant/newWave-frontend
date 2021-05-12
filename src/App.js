@@ -9,12 +9,18 @@ import ItemList from './ItemList'
 import ItemCard from './ItemCard'
 
 function App() {
+  // set profile details once fetched
   const[profileDetails, setProfileDetails] = useState({})
+
+    // set listings details once fetched
   const [listingsArr, setListingsArr] = useState([])
+
+
   const [selectedCat, setSelectedCat] = useState("All")
   const [catClicked, setCatClicked] = useState(false)
-  const [filterChange, setFilterChange] = useState("---")
+  const [filterChange, setFilterChange] = useState([])
   
+  console.log(filterChange)
 
   useEffect(()=>{
       fetch ('http://localhost:3000/listings')
@@ -27,7 +33,7 @@ function App() {
           return listing
       } else if (listing.category === selectedCat) {
           return listing
-      }
+      } 
   })
  
 
@@ -41,21 +47,7 @@ function App() {
     setListingsArr([...listingsArr, newItemObj])
   }
 
-  function filterByPrice(filterChange) {
-    if ( filteredByCat ) {
-      if (filterChange === "Low") {
-        const priceSortedArr = filteredByCat.sort((a,b) => b.price - a.price )
-        setListingsArr(priceSortedArr)
-      } else if (filterChange === "High") {
-        const priceSortedArr = filteredByCat.sort((a,b) => a.price - b.price )
-        setListingsArr(priceSortedArr)
-      }
-      // else {
-      //   const priceSortedArr = filteredByCat
-      //   setListingsArr(priceSortedArr)
-      // }
-  }
-}
+  
 
   return (
     <div>
@@ -69,7 +61,7 @@ function App() {
           setSelectedCat={setSelectedCat} 
           catClicked={catClicked} 
           setCatClicked={setCatClicked}
-          filterByPrice={filterByPrice}
+          // filterByPrice={filterByPrice}
           filterChange={filterChange}
           setFilterChange={setFilterChange}/>
         </Route>
@@ -83,7 +75,7 @@ function App() {
           <ItemList/>
         </Route>
         <Route  path="/listings/:id">
-          <ItemCard/>
+          <ItemCard filteredByCat={filteredByCat}/>
         </Route>
       </Switch>
     </div>
