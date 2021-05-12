@@ -2,7 +2,7 @@ import React from 'react';
 import Categories from './Categories'
 
 
-function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setCatClicked, filterByPrice, filterChange, setFilterChange, setSaleChange, saleTypeSelection, removeDeleted }){
+function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setCatClicked, filterByPrice, filterChange, setFilterChange, setSaleChange, saleTypeSelection}){
 
     
     return (
@@ -17,8 +17,7 @@ function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setC
             filterChange={filterChange}
             setFilterChange={setFilterChange}
             setSaleChange={setSaleChange}
-            saleTypeSelection={saleTypeSelection}
-            removeDeleted={removeDeleted}/>
+            saleTypeSelection={saleTypeSelection}/>
             {/* <Filter listingsArr={listingsArr}/> */}
             {/* <ItemList filteredByCat={filteredByCat}/> */}
         </div>

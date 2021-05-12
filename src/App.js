@@ -15,6 +15,7 @@ function App() {
   const [catClicked, setCatClicked] = useState(false)
   const [filterChange, setFilterChange] = useState("---")
   const [saleChange, setSaleChange] = useState("all")
+  const history = useHistory()
   
 
   useEffect(()=>{
@@ -65,7 +66,7 @@ function App() {
     }
     return filteredByCat
   }
-  const history = useHistory()
+  
 
   function removeDeleted(id) {
     const afterDelete = listingsArr.filter(listing => {
@@ -95,8 +96,7 @@ function App() {
           filterChange={filterChange}
           setFilterChange={setFilterChange}
           setSaleChange={setSaleChange}
-          saleTypeSelection={saleTypeSelection}
-          removeDeleted={removeDeleted}/>
+          saleTypeSelection={saleTypeSelection}/>
         </Route>
         <Route path="/profile/:id">
           <Profile profileDetails={profileDetails}/>
