@@ -10,9 +10,10 @@ function Categories({ filteredByCat, selectedCat, setSelectedCat, catClicked, se
         return listing.category
     })
    
-    const uniqueCats = Array.from(new Set([...instrumentCats, "All"]))
+    const uniqueCats = Array.from(new Set(instrumentCats))
+    const allCats = [...uniqueCats, "All"]
 
-    const catsArr = uniqueCats.map(cat => {
+    const catsArr = allCats.map(cat => {
         return <CategoryCard key={cat} name={cat} selectedCat={selectedCat} setSelectedCat={setSelectedCat} catClicked={catClicked} setCatClicked={setCatClicked}/>
     })  
 
