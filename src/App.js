@@ -41,20 +41,15 @@ function App() {
     setListingsArr([...listingsArr, newItemObj])
   }
 
-  function filterByPrice(filterChange) {
-    if ( filteredByCat ) {
+  function filterByPrice() {
       if (filterChange === "Low") {
-        const priceSortedArr = filteredByCat.sort((a,b) => b.price - a.price )
-        setListingsArr(priceSortedArr)
-      } else if (filterChange === "High") {
         const priceSortedArr = filteredByCat.sort((a,b) => a.price - b.price )
-        setListingsArr(priceSortedArr)
-      }
-      // else {
-      //   const priceSortedArr = filteredByCat
-      //   setListingsArr(priceSortedArr)
-      // }
-  }
+        return priceSortedArr
+      } else if (filterChange === "High") {
+        const priceSortedArr = filteredByCat.sort((a,b) => b.price - a.price )
+        return priceSortedArr
+      } 
+        return filteredByCat
 }
 
   return (
@@ -64,7 +59,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <HomePage 
-          filteredByCat={filteredByCat} 
+          filteredByCat={filterByPrice()} 
           selectedCat={selectedCat} 
           setSelectedCat={setSelectedCat} 
           catClicked={catClicked} 

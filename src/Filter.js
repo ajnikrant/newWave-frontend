@@ -5,7 +5,7 @@ function Filter({ filteredByCat, filterByPrice, filterChange, setFilterChange })
     
     function handlePriceFilterChange(e) {
         setFilterChange(e.target.value)
-        filterByPrice(filterChange)
+        filterByPrice()
     }
     
     // function filterByPrice() {
