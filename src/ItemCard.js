@@ -8,7 +8,7 @@ function ItemCard({ listing }){
     const history = useHistory()
 
     function handleItemClick() {
-        history.push(`/listings/${id}`)
+        history.push(`/listings/${id}`, { params: listing })
     }
 
     return (
