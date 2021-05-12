@@ -6,7 +6,7 @@ import HomePage from './HomePage'
 import Profile from './Profile'
 import NewItemForm from './NewItemForm';
 import ItemList from './ItemList'
-import ItemCard from './ItemCard'
+import ItemDetail from './ItemDetail'
 
 function App() {
   const[profileDetails, setProfileDetails] = useState({})
@@ -91,11 +91,11 @@ function App() {
         <Route  path="/listings/new">
           <NewItemForm sendNewItemUp={addNewItem}/>
         </Route>
-        <Route  path="/listings">
+        <Route exact path="/listings">
           <ItemList/>
         </Route>
-        <Route  path="/listings/:id">
-          <ItemCard/>
+        <Route exact path="/listings/:id">
+          <ItemDetail />
         </Route>
       </Switch>
     </div>
