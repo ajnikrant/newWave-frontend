@@ -5,7 +5,7 @@ import Categories from './Categories'
 import Filter from './Filter'
 
 
-function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setCatClicked, filterByPrice, filterChange, setFilterChange }){
+function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setCatClicked, filterByPrice, filterChange, setFilterChange, setSaleChange, saleTypeSelection }){
 
     
     return (
@@ -18,7 +18,9 @@ function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setC
             setCatClicked={setCatClicked} 
             filterByPrice={filterByPrice}
             filterChange={filterChange}
-            setFilterChange={setFilterChange}/>
+            setFilterChange={setFilterChange}
+            setSaleChange={setSaleChange}
+            saleTypeSelection={saleTypeSelection}/>
             {/* <Filter listingsArr={listingsArr}/> */}
             {/* <ItemList filteredByCat={filteredByCat}/> */}
         </div>

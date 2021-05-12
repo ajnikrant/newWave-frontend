@@ -14,6 +14,7 @@ function App() {
   const [selectedCat, setSelectedCat] = useState("All")
   const [catClicked, setCatClicked] = useState(false)
   const [filterChange, setFilterChange] = useState("---")
+  const [saleChange, setSaleChange] = useState("all")
   
 
   useEffect(()=>{
@@ -52,6 +53,20 @@ function App() {
         return filteredByCat
 }
 
+
+
+  function saleTypeSelection() {
+    if (saleChange === "for_sale") {
+       const newArr = filteredByCat.filter(listing => (listing.for_sale === true))
+      return newArr
+    } else if (saleChange === "barter") {
+       const newArr = filteredByCat.filter(listing => (listing.barter === true))
+      return newArr
+    }
+    return filteredByCat
+  }
+
+
   return (
     <div>
       <Banner />
@@ -59,14 +74,16 @@ function App() {
       <Switch>
         <Route exact path="/">
           <HomePage 
-          filteredByCat={filterByPrice()} 
+          filteredByCat={saleTypeSelection()} 
           selectedCat={selectedCat} 
           setSelectedCat={setSelectedCat} 
           catClicked={catClicked} 
           setCatClicked={setCatClicked}
           filterByPrice={filterByPrice}
           filterChange={filterChange}
-          setFilterChange={setFilterChange}/>
+          setFilterChange={setFilterChange}
+          setSaleChange={setSaleChange}
+          saleTypeSelection={saleTypeSelection}/>
         </Route>
         <Route path="/profile/:id">
           <Profile profileDetails={profileDetails}/>

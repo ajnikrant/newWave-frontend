@@ -1,18 +1,17 @@
 import React from 'react';
 
-function Filter({ filteredByCat, filterByPrice, filterChange, setFilterChange }){
-    // const [filterChange, setFilterChange] = useState("---")
+function Filter({  filterByPrice, setFilterChange, setSaleChange, saleTypeSelection}){
+    
     
     function handlePriceFilterChange(e) {
         setFilterChange(e.target.value)
         filterByPrice()
     }
     
-    // function filterByPrice() {
-    //     if (filterChange === "Low") {
-    //        return filteredByCat.sort((a,b) => a.price - b.price )
-    //     }
-    // }
+   function handleSaleToggle(e) {
+        setSaleChange(e.target.value)
+        saleTypeSelection()
+   }
 
     return (
         <div>
@@ -23,10 +22,10 @@ function Filter({ filteredByCat, filterByPrice, filterChange, setFilterChange })
                 <option value="High">High to Low</option>
             </select>
             <label> Sort by sale/trade: </label>
-            <select>
-                <option>---</option>
-                <option>Sale only</option>
-                <option>Trade only</option>
+            <select onChange={handleSaleToggle}>
+                <option value="all">All</option>
+                <option value="for_sale">Sale only</option>
+                <option value="barter">Trade only</option>
             </select>
         </div>
     )
