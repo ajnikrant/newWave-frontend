@@ -15,6 +15,77 @@ function ItemDetail({ removeDeleted }){
     function handleUpdate() {
         setToUpdate(toUpdate => !toUpdate)
     }
+
+
+    const [editFormData, setEditFormData] = useState({
+        title: listingDetail.title,
+        description: listingDetail.description,
+        price: listingDetail.price,
+        image: listingDetail.image,
+        category: listingDetail.category,
+        barter: listingDetail.barter,
+        for_sale: listingDetail.for_sale,
+        barter_description: listingDetail.barter_description,
+        location: listingDetail.location,
+    })
+
+    // need to change function names, add functions to onClicks and add state value
+    function handleChange(e){
+        setEditFormData({...editFormData, 
+            [e.target.name] : e.target.value
+        })
+    }
+
+    function handleCategoryChange(e){
+        setEditFormData({...editFormData, 
+            ["category"] : e.target.value
+        })
+    }
+
+
+    function handleSaleTypeChange(e){
+        if (e.target.value == "for_sale"){
+            setEditFormData({...editFormData, 
+                ["for_sale"] : true,
+                ["barter"] : false
+            })}
+        else if (e.target.value == "barter"){
+            setEditFormData({...editFormData, 
+                ["barter"] : true, 
+                ["for_sale"] : false,
+            })}
+        else if (e.target.value == "both"){
+            setEditFormData({...editFormData, 
+                ["for_sale"] : true,
+                ["barter"] : true
+            })}
+    }
+
+    function handleSubmit(e){
+        e.preventDefault()
+
+        const newItem = {
+            title: editFormData.title,
+            description: editFormData.description,
+            price: Number(editFormData.price),
+            image: editFormData.image,
+            category: editFormData.category,
+            barter: editFormData.barter,
+            for_sale: editFormData.for_sale,
+            barter_description: editFormData.barter_description,
+            location: editFormData.location,
+            user_id:  2
+        }
+
+        fetch(`http://localhost:3000/listings${listingDetail.id}`, {
+            method: "PATCH",
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify(newItem)
+        })
+        .then(r => r.json())
+        .then(console.log)
+    }
+
   
     return (
        <div>
@@ -45,63 +116,63 @@ function ItemDetail({ removeDeleted }){
                     <input type="text"></input><br></br><br></br>
                     <input type="submit"></input>
                 </form> */}
-                 <h2>Update Your Listing</h2>
-        <form>
-            <div className="form-floating mb-3">
-                <input type="text" name="title" className="form-control" id="floatingInput" placeholder="Item Name"/>
-                <label for="floatingInput">Item Name</label>
-            </div>
-          <div className="form-floating mb-3">
-                <textarea className="form-control" name="description" placeholder="Description..." id="floatingTextarea2" ></textarea>
-                <label for="floatingInput">Description</label>
-            </div>
-          <div className="form-floating mb-3">
-                <input type="text" name="location" className="form-control" id="floatingInput" placeholder="Where are you Located?"/>
-                <label for="floatingInput">Location</label>
-            </div>
-          <div className="form-floating mb-3">
-                <input type="number" name="price" className="form-control" id="floatingInput" placeholder="Price"/>
-                <label for="floatingInput">Price</label>
-            </div>
-            <div className="form-floating mb-3">
-                <input type="text" name="image" className="form-control" id="floatingInput" placeholder="Image"/>
-                <label for="floatingInput">Image</label>
-            </div>
-            {/* <div className="mb-3">
-                <label for="formFile" className="form-label">Image</label>
-                <input onChange={handleChange} value={formData.image} name="image" className="form-control" type="file" id="formFile"/>
-            </div> */}
-          <label> Select Item Category:
-            <select className="form-select" id="floatingSelect" aria-label="Floating label select example" >
-                <option value="strings">Strings</option>
-                <option value="percussion">Percussion</option>
-                <option value="woodwind">Woodwind</option>
-                <option value="brass">Brass</option>
-                <option value="piano">Keyboard/Piano</option>
-                <option value="misc">Other</option>
-             </select> 
-         </label>
-            <br></br>
-            <br></br>
-          <label> Sell or Trade? 
-          <select className="form-select" id="floatingSelect" aria-label="Floating label select example" >
-            <option value="barter">Trade</option>
-            <option value="for_sale">Sell</option>
-            <option value="both">Both</option>
-          </select>
-         </label>
-          <br></br>
-          <br></br>
-        <label> If You Chose Barter, What Are You Looking To Trade For?
-        <div className="form-floating mb-3">
-                <input type="text" name="barter_description" className="form-control" id="floatingInput" placeholder="Where are you Located?"/>
-                <label for="floatingInput">Guitars, Drums, etc</label>
-            </div>
-         </label>
-         <br></br>
-          <br></br>
-          <button  className="btn btn-primary" type="submit">Create Listing</button>
-        </form >
+                 <h2>Edit Your Listing</h2>
+                    <form>
+                        <div className="form-floating mb-3">
+                            <input type="text" name="title" className="form-control" id="floatingInput" placeholder="Item Name"/>
+                            <label for="floatingInput">Item Name</label>
+                        </div>
+                    <div className="form-floating mb-3">
+                            <textarea className="form-control" name="description" placeholder="Description..." id="floatingTextarea2" ></textarea>
+                            <label for="floatingInput">Description</label>
+                        </div>
+                    <div className="form-floating mb-3">
+                            <input type="text" name="location" className="form-control" id="floatingInput" placeholder="Where are you Located?"/>
+                            <label for="floatingInput">Location</label>
+                        </div>
+                    <div className="form-floating mb-3">
+                            <input type="number" name="price" className="form-control" id="floatingInput" placeholder="Price"/>
+                            <label for="floatingInput">Price</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input type="text" name="image" className="form-control" id="floatingInput" placeholder="Image"/>
+                            <label for="floatingInput">Image</label>
+                        </div>
+                        {/* <div className="mb-3">
+                            <label for="formFile" className="form-label">Image</label>
+                            <input onChange={handleChange} value={formData.image} name="image" className="form-control" type="file" id="formFile"/>
+                        </div> */}
+                    <label> Select Item Category:
+                        <select className="form-select" id="floatingSelect" aria-label="Floating label select example" >
+                            <option value="strings">Strings</option>
+                            <option value="percussion">Percussion</option>
+                            <option value="woodwind">Woodwind</option>
+                            <option value="brass">Brass</option>
+                            <option value="piano">Keyboard/Piano</option>
+                            <option value="misc">Other</option>
+                        </select> 
+                    </label>
+                        <br></br>
+                        <br></br>
+                    <label> Sell or Trade? 
+                    <select className="form-select" id="floatingSelect" aria-label="Floating label select example" >
+                        <option value="barter">Trade</option>
+                        <option value="for_sale">Sell</option>
+                        <option value="both">Both</option>
+                    </select>
+                    </label>
+                    <br></br>
+                    <br></br>
+                    <label> If You Chose Barter, What Are You Looking To Trade For?
+                    <div className="form-floating mb-3">
+                            <input type="text" name="barter_description" className="form-control" id="floatingInput" placeholder="Where are you Located?"/>
+                            <label for="floatingInput">Guitars, Drums, etc</label>
+                        </div>
+                    </label>
+                    <br></br>
+                    <br></br>
+                    <button  className="btn btn-primary" type="submit">Edit Listing</button>
+                    </form >
       </div> : null}
        </div>
 
