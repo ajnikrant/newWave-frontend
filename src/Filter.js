@@ -5,7 +5,7 @@ function Filter({  filterByPrice, setFilterChange, setSaleChange, saleTypeSelect
     
     function handlePriceFilterChange(e) {
         setFilterChange(e.target.value)
-        filterByPrice()
+        // filterByPrice()
     }
     
    function handleSaleToggle(e) {

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import Banner from './Banner'
 import NavBar from './NavBar'
 import HomePage from './HomePage'
@@ -42,30 +42,68 @@ function App() {
     setListingsArr([...listingsArr, newItemObj])
   }
 
-  
-  
-  
+//   function filterByPrice() {
+//       if (filterChange === "Low") {
+//         const priceSortedArr = filteredByCat.sort((a,b) => a.price - b.price )
+//         return priceSortedArr
+//       } else if (filterChange === "High") {
+//         const priceSortedArr = filteredByCat.sort((a,b) => b.price - a.price )
+//         return priceSortedArr
+//       } 
+//         return filteredByCat
+// }
+
+
   function saleTypeSelection() {
     if (saleChange === "for_sale") {
-      const newArr = filteredByCat.filter(listing => (listing.for_sale === true))
+       const newArr = filteredByCat.filter(listing => (listing.for_sale === true))
+        if (filterChange === "Low") {
+          const priceSortedArr = newArr.sort((a,b) => a.price - b.price )
+          return priceSortedArr
+        } else if (filterChange === "High") {
+          const priceSortedArr = newArr.sort((a,b) => b.price - a.price )
+          return priceSortedArr
+        } 
+        
       return newArr
+
     } else if (saleChange === "barter") {
-      const newArr = filteredByCat.filter(listing => (listing.barter === true))
-      return newArr
+       const newArr = filteredByCat.filter(listing => (listing.barter === true))
+          if (filterChange === "Low") {
+            const priceSortedArr = newArr.sort((a,b) => a.price - b.price )
+            return priceSortedArr
+          } else if (filterChange === "High") {
+            const priceSortedArr = newArr.sort((a,b) => b.price - a.price )
+            return priceSortedArr
+          } 
+        return newArr
     }
-    return filteredByCat
+    // return filteredByCat
+    else if (saleChange === "all") {
+      const newArr = filteredByCat
+         if (filterChange === "Low") {
+           const priceSortedArr = newArr.sort((a,b) => a.price - b.price )
+           return priceSortedArr
+         } else if (filterChange === "High") {
+           const priceSortedArr = newArr.sort((a,b) => b.price - a.price )
+           return priceSortedArr
+         } 
+       return newArr
+  }
+}
+
+  const history = useHistory()
+
+  function removeDeleted(id) {
+    const afterDelete = listingsArr.filter(listing => {
+      if (listing.id !== id) {
+        return listing
+      }
+    })
+    setListingsArr(afterDelete)
+    history.push('/')
   }
   
-  function filterByPrice() {
-      if (filterChange === "Low") {
-        const priceSortedArr = filteredByCat.sort((a,b) => a.price - b.price )
-        return priceSortedArr
-      } else if (filterChange === "High") {
-        const priceSortedArr = filteredByCat.sort((a,b) => b.price - a.price )
-        return priceSortedArr
-      } 
-        return filteredByCat
-}
 
 
   return (
@@ -80,23 +118,24 @@ function App() {
           setSelectedCat={setSelectedCat} 
           catClicked={catClicked} 
           setCatClicked={setCatClicked}
-          filterByPrice={filterByPrice}
+          // filterByPrice={filterByPrice}
           filterChange={filterChange}
           setFilterChange={setFilterChange}
           setSaleChange={setSaleChange}
-          saleTypeSelection={saleTypeSelection}/>
+          saleTypeSelection={saleTypeSelection}
+          removeDeleted={removeDeleted}/>
         </Route>
         <Route path="/profile/:id">
           <Profile profileDetails={profileDetails}/>
         </Route>
-        <Route  path="/listings/new">
+        <Route exact path="/listings/new">
           <NewItemForm sendNewItemUp={addNewItem}/>
         </Route>
         <Route exact path="/listings">
           <ItemList/>
         </Route>
         <Route exact path="/listings/:id">
-          <ItemDetail />
+          <ItemDetail removeDeleted={removeDeleted}/>
         </Route>
       </Switch>
     </div>
