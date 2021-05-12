@@ -74,7 +74,7 @@ function NewItemForm({sendNewItemUp}){
         <div >
         <h2>Submit An Item to Sell or Trade</h2>
         <form onSubmit={handleSubmit}>
-            <div class="form-floating mb-3">
+            <div className="form-floating mb-3">
                 <input type="text" onChange={handleChange} value={formData.title} name="title" className="form-control" id="floatingInput" placeholder="Item Name"/>
                 <label for="floatingInput">Item Name</label>
             </div>
