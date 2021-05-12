@@ -67,9 +67,6 @@ function NewItemForm({sendNewItemUp}){
         })
         .then(r => r.json())
         .then(sendNewItemUp)
-
-
-        // sendNewItemUp(newItem)
     }
 
 
@@ -77,27 +74,32 @@ function NewItemForm({sendNewItemUp}){
         <div >
         <h2>Submit An Item to Sell or Trade</h2>
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={handleChange} value={formData.title} name="title" placeholder="Item Name" />
-          <br></br>
-          <br></br>
-          <input type="textarea" onChange={handleChange} value={formData.description} name="description" placeholder="Description" />
-          <br></br>
-          <br></br>
-          <input type="text" onChange={handleChange} value={formData.location} name="location" placeholder="Where are you Located?" />
-          <br></br>
-          <br></br>
-          <input type="number" onChange={handleChange} value={formData.price} name="price" step="0.01" placeholder="Price" />
-          <br></br>
-          <br></br> 
-          {/* <label > Item Image: */}
-            {/* <input type="file" onChange={handleChange} value={formData.image} name="image" label="Item Image" /> */}
-            <input type="text" onChange={handleChange} value={formData.image} name="image" placeholder="Image URL" />
-          {/* </label> */}
-          <br></br>
-          <br></br>          
- 
+            <div class="form-floating mb-3">
+                <input type="text" onChange={handleChange} value={formData.title} name="title" className="form-control" id="floatingInput" placeholder="Item Name"/>
+                <label for="floatingInput">Item Name</label>
+            </div>
+          <div className="form-floating mb-3">
+                <textarea className="form-control" onChange={handleChange} value={formData.description} name="description" placeholder="Description..." id="floatingTextarea2" ></textarea>
+                <label for="floatingInput">Description</label>
+            </div>
+          <div className="form-floating mb-3">
+                <input type="text" onChange={handleChange} value={formData.location} name="location" className="form-control" id="floatingInput" placeholder="Where are you Located?"/>
+                <label for="floatingInput">Location</label>
+            </div>
+          <div className="form-floating mb-3">
+                <input type="number" onChange={handleChange} value={formData.price} name="price" className="form-control" id="floatingInput" placeholder="Price"/>
+                <label for="floatingInput">Price</label>
+            </div>
+            <div className="form-floating mb-3">
+                <input type="text" onChange={handleChange} value={formData.image} name="image" className="form-control" id="floatingInput" placeholder="Image"/>
+                <label for="floatingInput">Image</label>
+            </div>
+            {/* <div className="mb-3">
+                <label for="formFile" className="form-label">Image</label>
+                <input onChange={handleChange} value={formData.image} name="image" className="form-control" type="file" id="formFile"/>
+            </div> */}
           <label> Select Item Category:
-            <select onChange={handleCategoryChange}>
+            <select className="form-select" id="floatingSelect" aria-label="Floating label select example" onChange={handleCategoryChange}>
                 <option value="strings">Strings</option>
                 <option value="percussion">Percussion</option>
                 <option value="woodwind">Woodwind</option>
@@ -106,11 +108,11 @@ function NewItemForm({sendNewItemUp}){
                 <option value="misc">Other</option>
              </select> 
          </label>
-         <br></br>
-          <br></br>
-          <label> Sell or Barter? 
-          <select onChange={handleSaleTypeChange}>
-            <option value="barter">Barter</option>
+            <br></br>
+            <br></br>
+          <label> Sell or Trade? 
+          <select className="form-select" id="floatingSelect" aria-label="Floating label select example" onChange={handleSaleTypeChange}>
+            <option value="barter">Trade</option>
             <option value="for_sale">Sell</option>
             <option value="both">Both</option>
           </select>
@@ -118,13 +120,14 @@ function NewItemForm({sendNewItemUp}){
           <br></br>
           <br></br>
         <label> If You Chose Barter, What Are You Looking To Trade For?
-        <input onChange={handleChange} type="text" value={formData.barter_description} name="barter_description" placeholder="Guitars, Drums, etc" />
-
+        <div className="form-floating mb-3">
+                <input type="text" onChange={handleChange} value={formData.barter_description} name="barter_description" className="form-control" id="floatingInput" placeholder="Where are you Located?"/>
+                <label for="floatingInput">Guitars, Drums, etc</label>
+            </div>
          </label>
          <br></br>
           <br></br>
-
-          <button  type="submit">Create Listing</button>
+          <button  className="btn btn-primary" type="submit">Create Listing</button>
         </form >
       </div>
     )
