@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import Banner from './Banner'
 import NavBar from './NavBar'
 import HomePage from './HomePage'
@@ -65,6 +65,18 @@ function App() {
     }
     return filteredByCat
   }
+  const history = useHistory()
+
+  function removeDeleted(id) {
+    const afterDelete = listingsArr.filter(listing => {
+      if (listing.id !== id) {
+        return listing
+      }
+    })
+    setListingsArr(afterDelete)
+    history.push('/')
+  }
+  
 
 
   return (
@@ -83,19 +95,20 @@ function App() {
           filterChange={filterChange}
           setFilterChange={setFilterChange}
           setSaleChange={setSaleChange}
-          saleTypeSelection={saleTypeSelection}/>
+          saleTypeSelection={saleTypeSelection}
+          removeDeleted={removeDeleted}/>
         </Route>
         <Route path="/profile/:id">
           <Profile profileDetails={profileDetails}/>
         </Route>
-        <Route  path="/listings/new">
+        <Route exact path="/listings/new">
           <NewItemForm sendNewItemUp={addNewItem}/>
         </Route>
         <Route exact path="/listings">
           <ItemList/>
         </Route>
         <Route exact path="/listings/:id">
-          <ItemDetail />
+          <ItemDetail removeDeleted={removeDeleted}/>
         </Route>
       </Switch>
     </div>

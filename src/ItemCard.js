@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import ItemDetail from './ItemDetail';
 
 
-function ItemCard({ listing }){
+function ItemCard({ listing, removeDeleted }){
     const { title, price, description, user_id, category, id, barter, for_sale, barter_description, image, location } = listing
     const history = useHistory()
 
