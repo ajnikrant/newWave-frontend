@@ -93,7 +93,6 @@ function App() {
   }
 }
 
-  const history = useHistory()
 
   function removeDeleted(id) {
     const afterDelete = listingsArr.filter(listing => {
