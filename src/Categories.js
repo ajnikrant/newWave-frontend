@@ -3,7 +3,7 @@ import CategoryCard from './CategoryCard';
 import Filter from './Filter';
 import ItemList from './ItemList';
 
-function Categories({ filteredByCat, selectedCat, setSelectedCat, catClicked, setCatClicked }){
+function Categories({ filteredByCat, selectedCat, setSelectedCat, catClicked, setCatClicked, filterByPrice, filterChange, setFilterChange }){
     // const [catClicked, setCatClicked] = useState(false)
 
     const instrumentCats = filteredByCat.map(listing => {
@@ -22,7 +22,7 @@ function Categories({ filteredByCat, selectedCat, setSelectedCat, catClicked, se
         <>
         <br></br><br></br>
             {!catClicked ? <CategoryCard name="All" /> : null}
-            {catClicked ? <Filter filteredByCat={filteredByCat}/> : null}
+            {catClicked ? <Filter filteredByCat={filteredByCat} filterByPrice={filterByPrice} filterChange={filterChange} setFilterChange={setFilterChange}/> : null}
             {catClicked ? <ItemList filteredByCat={filteredByCat}/> : null}
             {catsArr}
         </>

@@ -13,6 +13,8 @@ function App() {
   const [listingsArr, setListingsArr] = useState([])
   const [selectedCat, setSelectedCat] = useState("All")
   const [catClicked, setCatClicked] = useState(false)
+  const [filterChange, setFilterChange] = useState("---")
+  
 
   useEffect(()=>{
       fetch ('http://localhost:3000/listings')
@@ -39,13 +41,37 @@ function App() {
     setListingsArr([...listingsArr, newItemObj])
   }
 
+  function filterByPrice(filterChange) {
+    if ( filteredByCat ) {
+      if (filterChange === "Low") {
+        const priceSortedArr = filteredByCat.sort((a,b) => b.price - a.price )
+        setListingsArr(priceSortedArr)
+      } else if (filterChange === "High") {
+        const priceSortedArr = filteredByCat.sort((a,b) => a.price - b.price )
+        setListingsArr(priceSortedArr)
+      }
+      // else {
+      //   const priceSortedArr = filteredByCat
+      //   setListingsArr(priceSortedArr)
+      // }
+  }
+}
+
   return (
     <div>
       <Banner />
       <NavBar catClicked={catClicked} setCatClicked={setCatClicked} setSelectedCat={setSelectedCat}/>
       <Switch>
         <Route exact path="/">
-          <HomePage filteredByCat={filteredByCat} selectedCat={selectedCat} setSelectedCat={setSelectedCat} listingsArr={listingsArr} catClicked={catClicked} setCatClicked={setCatClicked}/>
+          <HomePage 
+          filteredByCat={filteredByCat} 
+          selectedCat={selectedCat} 
+          setSelectedCat={setSelectedCat} 
+          catClicked={catClicked} 
+          setCatClicked={setCatClicked}
+          filterByPrice={filterByPrice}
+          filterChange={filterChange}
+          setFilterChange={setFilterChange}/>
         </Route>
         <Route path="/profile/:id">
           <Profile profileDetails={profileDetails}/>

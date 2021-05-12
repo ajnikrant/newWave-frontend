@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-function Filter({ filteredByCat }){
-    const [filterChange, setFilterChange] = useState("---")
+function Filter({ filteredByCat, filterByPrice, filterChange, setFilterChange }){
+    // const [filterChange, setFilterChange] = useState("---")
     
     function handlePriceFilterChange(e) {
         setFilterChange(e.target.value)
+        filterByPrice(filterChange)
     }
     
     // function filterByPrice() {
-    //     if (filterChange ===)
+    //     if (filterChange === "Low") {
+    //        return filteredByCat.sort((a,b) => a.price - b.price )
+    //     }
     // }
 
     return (
