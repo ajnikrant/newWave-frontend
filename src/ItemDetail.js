@@ -101,9 +101,9 @@ function ItemDetail({ removeDeleted, editListing }){
             <p><strong>Willing to trade for: </strong>{listingDetail.barter_description}</p>
             <p><strong>Located: </strong>{listingDetail.location}</p>
             <button>Message seller</button>
-            <button onClick={handleUpdate}>Update Listing</button>
+            <button onClick={handleUpdate} >Update Listing</button>
             <button onClick={handleDlt}>Delete Listing</button>
-            {toUpdate ? <div>
+            {toUpdate ? <div >
                 <br></br><br></br>
             
                  <h2>Edit Your Listing</h2>
