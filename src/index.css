@@ -195,13 +195,17 @@ img {
 
 }
 .icon {
-  width: 7.5%;
+  width: 65px;
   float: left;
-  font-size: 50px;
-  height: 150px;
-  padding: 10px;
+  font-size: 30px;
+  height: 50px;
+  padding: 0 10px 0 10px;
   min-width: 50px;
   position: relative;
+  border: 1.5px solid black;
+  border-radius: 5%;
+  margin: 5px;
+  justify-content: space-evenly;
 }
 
 .icon:hover {
@@ -210,10 +214,27 @@ img {
 
 #itemDetailDiv {
   text-align: center;
+  background-color: rgb(234, 243, 239);
+}
+#itemDetailDiv h1 {
+  padding-bottom: 30px;
+  padding-top: 20px;
+}
+
+#itemDetailDiv img {
+  border-radius: 5%;
+  padding-bottom: 30px;
+}
+
+#itemDetailDiv p.detailsP {
+  text-align: left;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 
 .iconBtn {
-  margin-left: 43%;
+  margin-left: 42%;
+  margin-top: 10px;
 }
 
 #moreBtn {
@@ -246,4 +267,12 @@ img {
 #updateform h2{
   text-align: center;
   padding-top: 80px;
+}
+.select {
+  margin: 20px 20px 20px 5px;
+}
+
+.filterDiv {
+  margin-left: 30%;
+  margin-bottom: 30px;
 }
