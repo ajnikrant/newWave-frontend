@@ -6,9 +6,10 @@ function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setC
 
     
     return (
-        <div id="homepage">
+        <>
+        {!catClicked ? <div id="homepage">
             <br></br>
-            <h1>Welcome to newWave!</h1>
+           <h1>Welcome to newWave!</h1>
             <br></br>
             <h3>Buy Instruments. Trade Instruments. Make Music. </h3>
             <body>
@@ -30,7 +31,18 @@ function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setC
                     setSaleChange={setSaleChange}
                     saleTypeSelection={saleTypeSelection}/>
             </body>
-        </div>
+            </div> : <Categories 
+                        filteredByCat={filteredByCat} 
+                        selectedCat={selectedCat} 
+                        setSelectedCat={setSelectedCat} 
+                        catClicked={catClicked} 
+                        setCatClicked={setCatClicked} 
+                        filterByPrice={filterByPrice}
+                        filterChange={filterChange}
+                        setFilterChange={setFilterChange}
+                        setSaleChange={setSaleChange}
+                        saleTypeSelection={saleTypeSelection}/>}
+        </>
     )
 }
 
