@@ -31,12 +31,16 @@ function CategoryCard({ name, selectedCat, setSelectedCat, catClicked, setCatCli
     return (
         <>
         {!catClicked &&
-        <div onClick={handleCategoryClick} >
+        <div className="item" onClick={handleCategoryClick} >
                 <h2>{name}</h2>
                 <img src={categoryImg} alt={name} />
         </div> }
         </>
     )
 }
+
+
+ 
+
 
 export default CategoryCard

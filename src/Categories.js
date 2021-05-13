@@ -19,12 +19,15 @@ function Categories({ filteredByCat, selectedCat, setSelectedCat, catClicked, se
 
         
     return (
-        <>
-        <br></br><br></br>
+        // <>
+        // <br></br><br></br>
+         <main id="carousel">
+//  
             {catClicked ? <Filter  filterByPrice={filterByPrice} setFilterChange={setFilterChange} setSaleChange={setSaleChange} saleTypeSelection={saleTypeSelection} filteredByCat={filteredByCat}/> : null}
             {catClicked ? <ItemList filteredByCat={filteredByCat} /> : null}
             {catsArr}
-        </>
+        </main>           
+        // </>
     )
 }
 
