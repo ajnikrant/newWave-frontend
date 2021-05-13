@@ -20,7 +20,8 @@ function ItemCard({ listing }){
                 <p className="card-text">Price: {price}</p>
                 <p className="card-text">Location: {location}</p>
                 <p className="card-text">Description: {description}</p>
-                <button onClick={handleItemClick}>See more details</button>
+                <button id="moreBtn" onClick={handleItemClick}>See more details</button>
+                
                 {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
             </div>
         </div>

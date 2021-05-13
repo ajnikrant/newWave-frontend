@@ -92,7 +92,7 @@ function ItemDetail({ removeDeleted, editListing }){
 
   
     return (
-       <div>
+       <div id="itemDetailDiv">
            <br></br>
             <h1>{listingDetail.title}</h1>
             <img src={listingDetail.image} alt={listingDetail.title}/>
@@ -100,11 +100,16 @@ function ItemDetail({ removeDeleted, editListing }){
             <p><strong>Price: </strong>${listingDetail.price}</p>
             <p><strong>Willing to trade for: </strong>{listingDetail.barter_description}</p>
             <p><strong>Located: </strong>{listingDetail.location}</p>
-            <button>Message seller</button>
-            <button onClick={handleUpdate} >Update Listing</button>
-            <button onClick={handleDlt}>Delete Listing</button>
-            {toUpdate ? <div >
-                <br></br><br></br>
+            <div className="iconBtn">
+                {/* <button>Message seller</button> */}
+                <p className="icon">&#x2709; </p>
+                <p className="icon" onClick={handleUpdate}> &#x270E; </p>
+                {/* <button onClick={handleUpdate}>Update Listing</button> */}
+                {/* <button onClick={handleDlt}>Delete Listing</button> */}
+                <p className="icon" onClick={handleDlt}> &#x26D4; </p>
+            </div>
+            {toUpdate ? <div>
+                <br></br><br></br><br></br><br></br>
             
                  <h2>Edit Your Listing</h2>
                     <form onSubmit={handleEditSubmit}>
