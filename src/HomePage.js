@@ -2,11 +2,13 @@ import React from 'react';
 import Categories from './Categories'
 
 
+
 function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setCatClicked, filterByPrice, filterChange, setFilterChange, setSaleChange, saleTypeSelection}){
 
     
     return (
         <>
+        
         {!catClicked ? <div id="homepage">
             <br></br>
            <h1>Welcome to newWave!</h1>
