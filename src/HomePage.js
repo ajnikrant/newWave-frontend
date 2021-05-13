@@ -7,6 +7,10 @@ function HomePage({ filteredByCat, selectedCat, setSelectedCat, catClicked, setC
     
     return (
         <div id="homepage">
+            <br></br>
+            <h1>Welcome to newWave!</h1>
+            <br></br>
+            <h3>Buy Instruments. Trade Instruments. Make Music. </h3>
             <body>
                 <input type="radio" name="position" />
                 <input type="radio" name="position" />

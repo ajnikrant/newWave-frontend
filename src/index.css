@@ -154,4 +154,14 @@ img {
 #homepage .item h2{
   text-align: center;
 }
-
+#homepage h1 {
+  text-align: center;
+}
+#homepage h3 {
+  text-align: center;
+}
+.bannerlogo {
+  width: 400px;
+  margin-left: 35%;
+  background-color: black;
+}
