@@ -33,7 +33,7 @@ img {
   height: 200px;
 }
 
-/* --------trying carousel------- */
+/* -------- carousel------- */
 #homepage body {
   height: 600px;
   margin: 0;
@@ -108,7 +108,6 @@ img {
 }
 
 #catImage:hover {
-  background-color: red;
   opacity: 0.5;
 }
 
@@ -165,6 +164,11 @@ img {
 #homepage h3 {
   text-align: center;
 }
+
+
+
+
+
 .bannerlogo {
   width: 400px;
   margin-left: 35%;
@@ -179,12 +183,14 @@ img {
   margin-left: 15%;
   padding-top: 80px;
   padding-bottom: 100px;
-  /* justify-content: center; */
-
 }
+
 #newform h2{
   text-align: center;
   padding-top: 80px;
-
 }
 
+.card-img-top:hover {
+  opacity: 0.5;
+
+}
