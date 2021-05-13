@@ -232,3 +232,18 @@ img {
   background-color: lightblue;
   opacity: .5;
 }
+
+#updateform{
+  background-color: rgba(191, 191, 247, 0.30);
+}
+#updateform #innerUpdateForm{
+  width: 70%;
+  margin-left: 15%;
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+#updateform h2{
+  text-align: center;
+  padding-top: 80px;
+}

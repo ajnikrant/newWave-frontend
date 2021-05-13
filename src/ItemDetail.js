@@ -103,16 +103,18 @@ function ItemDetail({ removeDeleted, editListing }){
             <div className="iconBtn">
                 {/* <button>Message seller</button> */}
                 <p className="icon">&#x2709; </p>
-                <p className="icon" onClick={handleUpdate}> &#x270E; </p>
+                <p className="icon" data-toggle="modal" data-target="#myModal" onClick={handleUpdate}> &#x270E; </p>
                 {/* <button onClick={handleUpdate}>Update Listing</button> */}
                 {/* <button onClick={handleDlt}>Delete Listing</button> */}
                 <p className="icon" onClick={handleDlt}> &#x26D4; </p>
             </div>
-            {toUpdate ? <div>
+            {toUpdate ? 
+            
+            <div id="updateform">
                 <br></br><br></br><br></br><br></br>
             
                  <h2>Edit Your Listing</h2>
-                    <form onSubmit={handleEditSubmit}>
+                    <form id="innerUpdateForm" onSubmit={handleEditSubmit}>
                         <div className="form-floating mb-3">
                             <input type="text" onChange={handleInfoChange} value={editFormData.title} name="title" className="form-control" id="floatingInput" placeholder="Item Name"/>
                             <label for="floatingInput">Item Name</label>
