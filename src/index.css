@@ -214,7 +214,7 @@ img {
 
 #itemDetailDiv {
   text-align: center;
-  background-color: rgb(236, 234, 243);
+  background-color: rgb(228, 236, 247);
 }
 #itemDetailDiv h1 {
   padding-bottom: 30px;
@@ -275,4 +275,13 @@ img {
 .filterDiv {
   margin-left: 30%;
   margin-bottom: 30px;
+}
+
+.categoryTitle {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 4em;
+  font-weight: bolder;
+  color: rgb(83, 82, 82);
 }

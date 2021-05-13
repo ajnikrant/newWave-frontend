@@ -97,8 +97,10 @@ function ItemDetail({ removeDeleted, editListing }){
             <h1>{listingDetail.title}</h1>
             <img src={listingDetail.image} alt={listingDetail.title}/>
             <p className="detailsP"><strong>Description: </strong>{listingDetail.description}</p>
+            <p className="detailsP"><strong>For Sale: </strong>{listingDetail.for_sale ? "Yes" : "No"}</p>
+            <p className="detailsP"><strong>Open to Trade: </strong>{listingDetail.barter ? "Yes" : "No"}</p>
             <p className="detailsP"><strong>Price: </strong>${listingDetail.price}</p>
-            <p className="detailsP"><strong>Willing to trade for: </strong>{listingDetail.barter_description}</p>
+            <p className="detailsP">{listingDetail.barter ? <strong>Willing to trade for: </strong> + listingDetail.barter_description : null}</p>
             <p className="detailsP"><strong>Located: </strong>{listingDetail.location}</p>
             <div className="iconBtn">
                 {/* <button>Message seller</button> */}
