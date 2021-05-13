@@ -58,7 +58,7 @@ img {
   --items: 6;
   --middle: 3;
   --position: 1;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 #homepage div.item {
