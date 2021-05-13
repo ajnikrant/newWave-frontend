@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom'
 
-function ItemDetail({ removeDeleted }){
+function ItemDetail({ removeDeleted, editListing }){
     const location = useLocation()
     const listingDetail = location.state.params
     const [toUpdate, setToUpdate] = useState(false)
@@ -30,20 +30,20 @@ function ItemDetail({ removeDeleted }){
     })
 
     // need to change function names, add functions to onClicks and add state value
-    function handleChange(e){
+    function handleInfoChange(e){
         setEditFormData({...editFormData, 
             [e.target.name] : e.target.value
         })
     }
 
-    function handleCategoryChange(e){
+    function handleEditCategoryChange(e){
         setEditFormData({...editFormData, 
             ["category"] : e.target.value
         })
     }
 
 
-    function handleSaleTypeChange(e){
+    function handleEditSaleTypeChange(e){
         if (e.target.value == "for_sale"){
             setEditFormData({...editFormData, 
                 ["for_sale"] : true,
@@ -61,7 +61,7 @@ function ItemDetail({ removeDeleted }){
             })}
     }
 
-    function handleSubmit(e){
+    function handleEditSubmit(e){
         e.preventDefault()
 
         const newItem = {
@@ -76,14 +76,14 @@ function ItemDetail({ removeDeleted }){
             location: editFormData.location,
             user_id:  2
         }
-
-        fetch(`http://localhost:3000/listings${listingDetail.id}`, {
+        
+        fetch(`http://localhost:3000/listings/${listingDetail.id}`, {
             method: "PATCH",
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(newItem)
         })
         .then(r => r.json())
-        .then(console.log)
+        .then(data => editListing(data))
     }
 
   
@@ -117,25 +117,25 @@ function ItemDetail({ removeDeleted }){
                     <input type="submit"></input>
                 </form> */}
                  <h2>Edit Your Listing</h2>
-                    <form>
+                    <form onSubmit={handleEditSubmit}>
                         <div className="form-floating mb-3">
-                            <input type="text" name="title" className="form-control" id="floatingInput" placeholder="Item Name"/>
+                            <input type="text" onChange={handleInfoChange} value={editFormData.title} name="title" className="form-control" id="floatingInput" placeholder="Item Name"/>
                             <label for="floatingInput">Item Name</label>
                         </div>
                     <div className="form-floating mb-3">
-                            <textarea className="form-control" name="description" placeholder="Description..." id="floatingTextarea2" ></textarea>
+                            <textarea className="form-control" onChange={handleInfoChange} value={editFormData.description} name="description" placeholder="Description..." id="floatingTextarea2" ></textarea>
                             <label for="floatingInput">Description</label>
                         </div>
                     <div className="form-floating mb-3">
-                            <input type="text" name="location" className="form-control" id="floatingInput" placeholder="Where are you Located?"/>
+                            <input type="text" onChange={handleInfoChange} value={editFormData.location} name="location" className="form-control" id="floatingInput" placeholder="Where are you Located?"/>
                             <label for="floatingInput">Location</label>
                         </div>
                     <div className="form-floating mb-3">
-                            <input type="number" name="price" className="form-control" id="floatingInput" placeholder="Price"/>
+                            <input type="number" onChange={handleInfoChange} value={editFormData.price} name="price" className="form-control" id="floatingInput" placeholder="Price"/>
                             <label for="floatingInput">Price</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="text" name="image" className="form-control" id="floatingInput" placeholder="Image"/>
+                            <input type="text" onChange={handleInfoChange} value={editFormData.image} name="image" className="form-control" id="floatingInput" placeholder="Image"/>
                             <label for="floatingInput">Image</label>
                         </div>
                         {/* <div className="mb-3">
@@ -143,7 +143,7 @@ function ItemDetail({ removeDeleted }){
                             <input onChange={handleChange} value={formData.image} name="image" className="form-control" type="file" id="formFile"/>
                         </div> */}
                     <label> Select Item Category:
-                        <select className="form-select" id="floatingSelect" aria-label="Floating label select example" >
+                        <select className="form-select" id="floatingSelect" aria-label="Floating label select example" onChange={handleEditCategoryChange}>
                             <option value="strings">Strings</option>
                             <option value="percussion">Percussion</option>
                             <option value="woodwind">Woodwind</option>
@@ -155,7 +155,7 @@ function ItemDetail({ removeDeleted }){
                         <br></br>
                         <br></br>
                     <label> Sell or Trade? 
-                    <select className="form-select" id="floatingSelect" aria-label="Floating label select example" >
+                    <select className="form-select" id="floatingSelect" aria-label="Floating label select example" onChange={handleEditSaleTypeChange}>
                         <option value="barter">Trade</option>
                         <option value="for_sale">Sell</option>
                         <option value="both">Both</option>

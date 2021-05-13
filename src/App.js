@@ -77,6 +77,16 @@ function App() {
     setListingsArr(afterDelete)
     history.push('/')
   }
+
+  function editListing(newObj) {
+    const editedListing = listingsArr.map(listing => {
+      if (listing.id === newObj.id) {
+        return {...listing, newObj}
+      }
+      return listing
+    })
+    setListingsArr(editedListing)
+  }
   
 
 
@@ -108,7 +118,7 @@ function App() {
           <ItemList/>
         </Route>
         <Route exact path="/listings/:id">
-          <ItemDetail removeDeleted={removeDeleted}/>
+          <ItemDetail removeDeleted={removeDeleted} editListing={editListing}/>
         </Route>
       </Switch>
     </div>
