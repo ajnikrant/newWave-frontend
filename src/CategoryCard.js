@@ -33,7 +33,7 @@ function CategoryCard({ name, selectedCat, setSelectedCat, catClicked, setCatCli
         {!catClicked &&
         <div className="item" onClick={handleCategoryClick} >
                 <h2>{name}</h2>
-                <img src={categoryImg} alt={name} />
+                <img id="catImage" src={categoryImg} alt={name} />
         </div> }
         </>
     )

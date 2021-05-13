@@ -107,6 +107,11 @@ img {
   --position: 1;
 }
 
+#catImage:hover {
+  background-color: red;
+  opacity: 0.5;
+}
+
 #homepage input:nth-of-type(2) {
   grid-column: 3 / 4;
   grid-row: 2 / 3;
@@ -182,3 +187,4 @@ img {
   padding-top: 80px;
 
 }
+
