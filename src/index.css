@@ -165,3 +165,20 @@ img {
   margin-left: 35%;
   background-color: black;
 }
+
+#newform{
+  background-color: rgba(191, 191, 247, 0.30);
+}
+#newform #innerNewForm{
+  width: 70%;
+  margin-left: 15%;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  /* justify-content: center; */
+
+}
+#newform h2{
+  text-align: center;
+  padding-top: 80px;
+
+}
