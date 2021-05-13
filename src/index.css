@@ -28,6 +28,9 @@ code {
     monospace;
 }
 
+
+/* ****** card image styling****** */
+
 img {
   width: 200px;
   height: 200px;
@@ -175,6 +178,9 @@ img {
   background-color: black;
 }
 
+/* ****** new form styling image****** */
+
+
 #newform{
   background-color: rgba(191, 191, 247, 0.30);
 }
@@ -254,6 +260,8 @@ img {
   opacity: .5;
 }
 
+/* ****** update form styling image****** */
+
 #updateform{
   background-color: rgba(191, 191, 247, 0.30);
 }
@@ -285,3 +293,37 @@ img {
   font-weight: bolder;
   color: rgb(83, 82, 82);
 }
+/* ****** profile styling****** */
+.profile-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  background-color: rgba(49, 32, 201, 0.2);
+  }
+  
+  .profileInfo { grid-area: 1 / 1 / 2 / 2;
+    margin-left: 15%;
+    padding-top: 70px;
+  }
+
+  .profileInfo img {
+    margin-left: 8%;
+  } 
+  .profileInfo p {
+    margin-left: 8%;
+  } 
+
+
+  .profileSales { grid-area: 1 / 2 / 2 / 3; 
+    padding-top: 70px;
+    padding-bottom: 100px;
+  }
+
+  .profileSales hr{
+    width: 50%;
+  }
+  .profileSales h2{
+    margin-left: 5%;
+  }

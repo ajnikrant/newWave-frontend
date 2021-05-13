@@ -9,13 +9,22 @@ function Profile({profileDetails}){
     
     
     return (
-        <div>
-            <h3>Welcome back {username}!</h3>
-            <img src={"https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"} alt={username} />
-            <p> Email: {email}</p>
-            <p>Your location: {location}</p>
-            <p>Purchase History: </p>
-            {sales && rendersaleDetails()}
+        <div className="profile-container" >
+            <div className="profileInfo">
+                <h2>Welcome back {username}!</h2>
+                <br></br>
+                <img src={"https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"} alt={username} />
+                <br></br>
+                <br></br>
+                <p> Email: {email}</p>
+                <br></br>
+                <p>Your location: {location}</p>
+            </div>
+            <div className="profileSales">
+                <h2>Purchase History: </h2>
+                <hr></hr>
+                {sales && rendersaleDetails()}
+            </div>
         </div>
     )
 }
