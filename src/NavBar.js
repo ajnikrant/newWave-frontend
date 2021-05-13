@@ -17,13 +17,33 @@ function NavBar({ catClicked, setCatClicked, setSelectedCat }){
       }
 
     return (
-        <div id="navbar">
-            <NavLink to="/" exact style={linkStyles} activeStyle={{ background: "darkblue",}} onClick={handleHomeClick}> Home </NavLink>
-            <NavLink to="/profile/:id" exact style={linkStyles} activeStyle={{ background: "darkblue",}}> Profile </NavLink>
-            <NavLink to="/listings/new" exact style={linkStyles} activeStyle={{ background: "darkblue",}}> Make a new listing </NavLink>
-
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li class="nav-item">
+               <NavLink className="nav-link" to="/" exact onClick={handleHomeClick}> Home </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/profile/:id" exact> Profile </NavLink>
+              </li>
+              <li className="nav-item">
+               <NavLink className="nav-link" to="/listings/new" exact> Make a new listing </NavLink>
+              </li>
+            </ul>
+          </div>
         </div>
+      </nav>
+
     )
 }
+
+
+
+
+
+
+
+
 
 export default NavBar
