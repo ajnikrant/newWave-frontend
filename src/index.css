@@ -2,7 +2,8 @@
 
   .card {
     width: 25%;
-    /* flex-wrap: wrap; */
+    max-width: 280px;
+    
   }
 
   .itemList{
@@ -31,3 +32,4 @@ img {
   width: 200px;
   height: 200px;
 }
+
