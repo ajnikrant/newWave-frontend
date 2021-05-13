@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import Modal from './Modal'
 import { useLocation } from 'react-router-dom'
 
 function ItemDetail({ removeDeleted, editListing }){
     const location = useLocation()
     const [listingDetail, setListingDetail] = useState(location.state.params)
     const [toUpdate, setToUpdate] = useState(false)
+    const [clickModal, setClickModal] = useState(false)
 
     
     function handleDlt() {
@@ -17,6 +19,9 @@ function ItemDetail({ removeDeleted, editListing }){
         setToUpdate(toUpdate => !toUpdate)
     }
 
+    function handleModalToggle(){
+        setClickModal(clickModal => !clickModal)
+    }
 
     const [editFormData, setEditFormData] = useState({
         title: listingDetail.title,
@@ -104,12 +109,14 @@ function ItemDetail({ removeDeleted, editListing }){
             <p className="detailsP"><strong>Located: </strong>{listingDetail.location}</p>
             <div className="iconBtn">
                 {/* <button>Message seller</button> */}
-                <p className="icon">&#x2709; </p>
+                <p className="icon" onClick={handleModalToggle}>&#x2709; </p>
+              
                 <p className="icon" data-toggle="modal" data-target="#myModal" onClick={handleUpdate}> &#x270E; </p>
                 {/* <button onClick={handleUpdate}>Update Listing</button> */}
                 {/* <button onClick={handleDlt}>Delete Listing</button> */}
                 <p className="icon" onClick={handleDlt}> &#x26D4; </p>
             </div>
+            {clickModal? <Modal handleModalToggle={handleModalToggle}/> : null}
             {toUpdate ? 
             
             <div id="updateform">

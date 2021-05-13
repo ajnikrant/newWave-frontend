@@ -327,3 +327,53 @@ img {
   .profileSales h2{
     margin-left: 5%;
   }
+
+
+  /* *****modal styling ******* */
+
+  .email-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .email-modal-content{
+    width: 500px;
+    height: 400px;
+
+    background-color: #fff;
+  }
+
+  .email-modal-header, .email-modal-footer {
+    padding: 10px;
+  }
+
+  .email-modal-title{
+    margin: 0;
+  }
+
+  .email-modal-body{
+    padding: 10px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+
+  .email-modal-body .input-group{
+    height: 250px;
+  }
+
+  .email-modal-body .bottom-btn{
+    margin-top: 13px;
+  }
+
+  .email-modal-content .btn-close{
+    margin-top: 10px;
+    margin-left: 90%;
+  }
