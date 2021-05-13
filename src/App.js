@@ -81,11 +81,13 @@ function App() {
   function editListing(newObj) {
     const editedListing = listingsArr.map(listing => {
       if (listing.id === newObj.id) {
-        return {...listing, newObj}
-      }
+        return newObj
+      } else {
       return listing
+      }
     })
     setListingsArr(editedListing)
+   
   }
   
 

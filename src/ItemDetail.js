@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom'
 
 function ItemDetail({ removeDeleted, editListing }){
     const location = useLocation()
-    const listingDetail = location.state.params
+    const [listingDetail, setListingDetail] = useState(location.state.params)
     const [toUpdate, setToUpdate] = useState(false)
+
     
     function handleDlt() {
         fetch(`http://localhost:3000/listings/${listingDetail.id}`, {
@@ -29,7 +30,7 @@ function ItemDetail({ removeDeleted, editListing }){
         location: listingDetail.location,
     })
 
-    // need to change function names, add functions to onClicks and add state value
+   
     function handleInfoChange(e){
         setEditFormData({...editFormData, 
             [e.target.name] : e.target.value
@@ -74,16 +75,19 @@ function ItemDetail({ removeDeleted, editListing }){
             for_sale: editFormData.for_sale,
             barter_description: editFormData.barter_description,
             location: editFormData.location,
-            user_id:  2
+            user_id:  2,
+            id: listingDetail.id
         }
+       
         
         fetch(`http://localhost:3000/listings/${listingDetail.id}`, {
             method: "PATCH",
-            headers: {'Content-Type' : 'application/json'},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newItem)
         })
-        .then(r => r.json())
-        .then(data => editListing(data))
+       
+            editListing(newItem)
+            setListingDetail(newItem)
     }
 
   
@@ -101,21 +105,7 @@ function ItemDetail({ removeDeleted, editListing }){
             <button onClick={handleDlt}>Delete Listing</button>
             {toUpdate ? <div>
                 <br></br><br></br>
-                {/* <form>
-                    <label>Title</label>
-                    <input type="text" placeholder={listingDetail.title}></input><br></br><br></br>
-                    <label>Image</label>
-                    <input type="text"></input><br></br><br></br>
-                    <label>Description</label>
-                    <input type="text"></input><br></br><br></br>
-                    <label>Price</label>
-                    <input type="number"></input><br></br><br></br>
-                    <label>Willing to trade for: </label>
-                    <input type="text"></input><br></br><br></br>
-                    <label>Location</label>
-                    <input type="text"></input><br></br><br></br>
-                    <input type="submit"></input>
-                </form> */}
+            
                  <h2>Edit Your Listing</h2>
                     <form onSubmit={handleEditSubmit}>
                         <div className="form-floating mb-3">
