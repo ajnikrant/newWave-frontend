@@ -105,7 +105,7 @@ function ItemDetail({ removeDeleted, editListing }){
             <p className="detailsP"><strong>For Sale: </strong>{listingDetail.for_sale ? "Yes" : "No"}</p>
             <p className="detailsP"><strong>Open to Trade: </strong>{listingDetail.barter ? "Yes" : "No"}</p>
             <p className="detailsP"><strong>Price: </strong>${listingDetail.price}</p>
-            <p className="detailsP">{listingDetail.barter ? <strong>Willing to trade for: </strong> + listingDetail.barter_description : null}</p>
+            {listingDetail.barter ? <p className="detailsP"><strong>Willing to trade for: </strong> + listingDetail.barter_description</p> : null}
             <p className="detailsP"><strong>Located: </strong>{listingDetail.location}</p>
             <div className="iconBtn">
                 {/* <button>Message seller</button> */}

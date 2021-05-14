@@ -41,6 +41,7 @@ function App() {
 
   function addNewItem(newItemObj){
     setListingsArr([...listingsArr, newItemObj])
+    history.push('/')
   }
 
 //   function filterByPrice() {
