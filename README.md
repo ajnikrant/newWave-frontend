@@ -1,6 +1,6 @@
 # NewWave
 
-
+newWave is a marketplace for musicians to sell, buy, or trade music instruments.
 
 ## Installation
 
